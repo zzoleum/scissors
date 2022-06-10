@@ -20,12 +20,24 @@ function playerChoice () {
     input = prompt("Type Rock, Paper, or Scissors")
   }
   input = input.toLowerCase();
-  console.log(input)
+  let check = validateInput(input);
+  if (check == true) {
+    console.log(input)
+  }
+ // console.log(input)
 }
 
 function computerChoice () {
   // get random input from computer)
   return choices[Math.floor(Math.random() * choices.length)]
+}
+
+function validateInput(choice) {
+  if (choice.include(choice)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 game();
