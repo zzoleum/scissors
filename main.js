@@ -1,3 +1,5 @@
+const choices = ["rock", "paper", "scissors"]
+
 // play the game
 // play five rounds
 // consol based
