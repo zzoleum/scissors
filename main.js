@@ -1,17 +1,21 @@
 const choices = ["rock", "paper", "scissors"]
 
-// play the game
-// play five rounds
-// consol based
+
 
 function game() {
-  playRound();
+ for(let i = 0; i <= 5; i++){
+   playRound();
+ }
 }
 
 function playRound() {
 const playerSelection = playerChoice();
 const computerSelection = computerChoice();
+console.log(computerSelection);
+const winner = checkWinner(playerSelection, computerSelection);
+console.log(winner);
 };
+
 
 function playerChoice () {
   // get input from player
@@ -21,22 +25,39 @@ function playerChoice () {
   }
   input = input.toLowerCase();
   let check = validateInput(input);
-  if (check == true) {
-    console.log(input)
+  while (check == false) {
+    input = prompt("Type Rock, Paper, or Scissors needs to be exact, but capitilization doesn't matter");
+    while (input == null) {
+    input = prompt("Type Rock, Paper, or Scissors")
+  
   }
- // console.log(input)
-}
+ input = input.toLowerCase();
+ check = validateInput(input);
 
+}
+return input;
+}
 function computerChoice () {
   // get random input from computer)
   return choices[Math.floor(Math.random() * choices.length)]
 }
 
 function validateInput(choice) {
-  if (choice.include(choice)) {
-    return true;
+  return choices.includes(choice);
+}
+
+function checkWinner(choiceP, choiceC) {
+  if (choiceP === choiceC) {
+    return "Tie";
+  } else if (
+    (choiceP === "rock" && choiceC === "scissors") || 
+  (choiceP === "paper" && choiceC === "rock") || 
+  (choiceP === "scissors" && choiceC === "paper")
+  )
+   {
+    return "Player"
   } else {
-    return false;
+    return "Computer"
   }
 }
 
